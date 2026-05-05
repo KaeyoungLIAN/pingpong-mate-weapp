@@ -1,0 +1,85 @@
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-bar {
+  display: flex;
+  background: #fff;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab-active {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background: #667eea;
+  border-radius: 2rpx;
+}
+
+.match-list {
+  flex: 1;
+}
+
+.match-card {
+  margin: 16rpx 20rpx;
+  padding: 24rpx;
+}
+
+.match-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: #eee;
+}
+
+.mini-creator {
+  flex: 1;
+  margin-left: 16rpx;
+}
+
+.mini-name {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.status-badge {
+  font-size: 22rpx;
+  padding: 4rpx 20rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+.status-badge.status-open { background: #d4edda; color: #155724; }
+.status-badge.status-full { background: #fff3cd; color: #856404; }
+.status-badge.status-cancelled { background: #f8d7da; color: #721c24; }
+.status-badge.status-completed { background: #e2e3e5; color: #383d41; }
+
+.match-body {
+  margin-left: 72rpx;
+}

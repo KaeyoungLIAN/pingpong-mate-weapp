@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="card">
+    <view class="form-group">
+      <text class="label">运动类型</text>
+      <view class="picker-disabled">乒乓球 🏓</view>
+    </view>
+
+    <view class="form-group">
+      <text class="label">日期</text>
+      <picker mode="date" value="{{date}}" bindchange="onDateChange" start="{{minDate}}">
+        <view class="picker {{date ? '' : 'placeholder'}}">{{date || '选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-row">
+      <view class="form-group half">
+        <text class="label">开始时间</text>
+        <picker mode="time" value="{{time_start}}" bindchange="onTimeStartChange">
+          <view class="picker {{time_start ? '' : 'placeholder'}}">{{time_start || '选择'}}</view>
+        </picker>
+      </view>
+      <view class="form-group half">
+        <text class="label">结束时间</text>
+        <picker mode="time" value="{{time_end}}" bindchange="onTimeEndChange">
+          <view class="picker {{time_end ? '' : 'placeholder'}}">{{time_end || '选择'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <text class="label">所在区</text>
+      <picker mode="selector" range="{{districtOptions}}" bindchange="onDistrictChange">
+        <view class="picker {{district ? '' : 'placeholder'}}">{{district || '选择所在区'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">最大参与人数</text>
+      <picker mode="selector" range="{{playerOptions}}" bindchange="onPlayersChange">
+        <view class="picker">{{max_players}}人</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">水平要求</text>
+      <picker mode="selector" range="{{skillOptions}}" bindchange="onSkillChange">
+        <view class="picker {{skill_level_required ? '' : 'placeholder'}}">{{skill_level_required ? ('Lv.' + skill_level_required + ' 及以上') : '不限'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">备注</text>
+      <textarea class="input-field textarea" value="{{notes}}" bindinput="onNotesInput" placeholder="如：自带球、AA场地费（最多100字）" maxlength="100" />
+    </view>
+  </view>
+
+  <view class="btn-area">
+    <button class="btn-primary" bindtap="handlePublish" loading="{{publishing}}">{{publishing ? '发布中...' : '发布约球'}}</button>
+  </view>
+</view>

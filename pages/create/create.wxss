@@ -1,0 +1,49 @@
+.page {
+  padding: 30rpx;
+}
+
+.form-group {
+  margin-bottom: 36rpx;
+}
+
+.form-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.half {
+  flex: 1;
+}
+
+.label {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.picker, .picker-disabled {
+  background: #f8f9fa;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.picker-disabled {
+  color: #333;
+  font-weight: 500;
+}
+
+.picker.placeholder {
+  color: #bbb;
+}
+
+.textarea {
+  height: 140rpx;
+}
+
+.btn-area {
+  padding: 30rpx;
+}

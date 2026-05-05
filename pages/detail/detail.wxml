@@ -1,0 +1,71 @@
+<view class="page">
+  <view class="card">
+    <view class="detail-header">
+      <view class="creator-row">
+        <image class="avatar" src="{{match.creator.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="creator-info">
+          <text class="nickname">{{match.creator.nickname}}</text>
+          <text class="level-tag level-{{match.creator.skill_level}}">Lv.{{match.creator.skill_level}}</text>
+        </view>
+      </view>
+      <view class="wechat-row" wx:if="{{match.wechat}}">
+        <text class="wechat-label">微信号：</text>
+        <text class="wechat-value" bindtap="copyWechat">{{match.wechat}}</text>
+        <text class="copy-hint">点击复制</text>
+      </view>
+    </view>
+
+    <view class="detail-body">
+      <view class="info-item">
+        <text class="info-label">📅 时间</text>
+        <text class="info-value">{{match.date}} {{match.time_start.slice(0,5)}}-{{match.time_end.slice(0,5)}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">📍 地点</text>
+        <text class="info-value">{{match.district}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">🏓 运动</text>
+        <text class="info-value">乒乓球</text>
+      </view>
+      <view class="info-item" wx:if="{{match.skill_level_required}}">
+        <text class="info-label">📊 水平要求</text>
+        <text class="info-value">Lv.{{match.skill_level_required}} 及以上</text>
+      </view>
+      <view class="info-item" wx:if="{{match.notes}}">
+        <text class="info-label">💬 备注</text>
+        <text class="info-value">{{match.notes}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">👥 报名情况</text>
+        <text class="info-value">{{match.applicant_count || 0}}/{{match.max_players}}人</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 报名人列表 -->
+  <view class="card" wx:if="{{match.applicants && match.applicants.length > 0}}">
+    <view class="section-title">已报名 ({{match.applicants.length}}人)</view>
+    <view wx:for="{{match.applicants}}" wx:key="index" class="applicant-row">
+      <image class="avatar-sm" src="{{item.user.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <text class="applicant-name">{{item.user.nickname}}</text>
+      <text class="level-tag level-{{item.user.skill_level}}">Lv.{{item.user.skill_level}}</text>
+      <text class="status-tag status-{{item.status}}">{{statusLabels[item.status]}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-bar" wx:if="{{!isCreator}}">
+    <button class="btn-primary {{isApplied ? 'btn-danger' : ''}}" bindtap="handleApply" loading="{{applying}}">
+      {{applying ? '处理中...' : (isApplied ? '取消报名' : '立即报名')}}
+    </button>
+  </view>
+
+  <view class="action-bar" wx:if="{{isCreator && match.status === 'open'}}">
+    <button class="btn-danger" bindtap="handleCancelMatch" loading="{{cancelling}}">取消约球</button>
+  </view>
+
+  <view class="status-bar" wx:if="{{match.status !== 'open'}}">
+    <text class="status-text">{{match.status === 'full' ? '该约球已满员' : (match.status === 'cancelled' ? '该约球已取消' : '该约球已结束')}}</text>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+{
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  },
+  "appid": "your_app_id_here",
+  "projectname": "乒乓搭子",
+  "libVersion": "3.3.0",
+  "condition": {}
+}

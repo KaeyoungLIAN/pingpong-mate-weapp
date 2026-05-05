@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'created' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="created">我发起的</view>
+    <view class="tab-item {{activeTab === 'applied' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="applied">我报名的</view>
+  </view>
+
+  <scroll-view scroll-y class="match-list">
+    <view wx:for="{{matches}}" wx:key="id" class="match-card card" bindtap="goDetail" data-match-id="{{item.id}}">
+      <view class="match-header">
+        <image class="avatar" src="{{item.creator.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="mini-creator">
+          <text class="mini-name">{{item.creator.nickname}}</text>
+        </view>
+        <view class="status-badge status-{{item.status}}">{{statusLabels[item.status]}}</view>
+      </view>
+
+      <view class="match-body">
+        <view class="info-row">
+          <text class="info-icon">📅</text>
+          <text>{{item.date}} {{item.time_start.slice(0,5)}}-{{item.time_end.slice(0,5)}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-icon">📍</text>
+          <text>{{item.district}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-icon">👥</text>
+          <text>{{item.applicant_count}}/{{item.max_players}}人</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{matches.length === 0}}" class="empty-state">
+      <text wx:if="{{activeTab === 'created'}}">还没有发布过约球</text>
+      <text wx:else>还没有报过名</text>
+    </view>
+  </scroll-view>
+</view>

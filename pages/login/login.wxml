@@ -1,0 +1,18 @@
+<view class="login-container">
+  <view class="login-header">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="title">乒乓搭子</text>
+    <text class="subtitle">找到水平相近的球友，一起快乐乒乓</text>
+  </view>
+
+  <view class="login-btn-area">
+    <button class="btn-primary login-btn" bindtap="handleLogin" loading="{{loading}}">
+      <text wx:if="{{!loading}}">微信一键登录</text>
+      <text wx:else>登录中...</text>
+    </button>
+  </view>
+
+  <view class="login-footer">
+    <text class="footer-text">登录即表示同意《用户协议》和《隐私政策》</text>
+  </view>
+</view>

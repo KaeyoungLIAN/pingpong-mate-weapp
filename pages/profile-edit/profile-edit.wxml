@@ -1,0 +1,59 @@
+<view class="page">
+  <view class="card">
+    <view class="form-group">
+      <text class="label">昵称</text>
+      <input class="input-field" value="{{nickname}}" bindinput="onNicknameInput" placeholder="输入昵称" />
+    </view>
+
+    <view class="form-group">
+      <text class="label">性别</text>
+      <picker mode="selector" range="{{genderOptions}}" bindchange="onGenderChange">
+        <view class="picker {{gender ? '' : 'placeholder'}}">{{gender ? gender : '请选择性别'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">年龄</text>
+      <input class="input-field" type="number" value="{{age}}" bindinput="onAgeInput" placeholder="输入年龄" />
+    </view>
+
+    <view class="form-group">
+      <text class="label">水平等级</text>
+      <picker mode="selector" range="{{skillOptions}}" bindchange="onSkillChange">
+        <view class="picker {{skill_level ? '' : 'placeholder'}}">{{skill_level ? ('Lv.' + skill_level + ' ' + skillLabels[skill_level-1]) : '请选择水平等级'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">所在区</text>
+      <picker mode="selector" range="{{districtOptions}}" bindchange="onDistrictChange">
+        <view class="picker {{district ? '' : 'placeholder'}}">{{district || '请选择所在区'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">球板类型</text>
+      <picker mode="selector" range="{{paddleOptions}}" bindchange="onPaddleChange">
+        <view class="picker {{paddle_type ? '' : 'placeholder'}}">{{paddle_type || '请选择球板类型'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">胶皮类型</text>
+      <picker mode="selector" range="{{rubberOptions}}" bindchange="onRubberChange">
+        <view class="picker {{rubber_type ? '' : 'placeholder'}}">{{rubber_type || '请选择胶皮类型'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="label">自我介绍</text>
+      <textarea class="input-field textarea" value="{{bio}}" bindinput="onBioInput" placeholder="介绍一下自己（最多50字）" maxlength="50" />
+      <text class="char-count">{{bio.length}}/50</text>
+    </view>
+  </view>
+
+  <view class="btn-area">
+    <button class="btn-primary" bindtap="handleSave" loading="{{saving}}">{{saving ? '保存中...' : '保存资料'}}</button>
+    <button class="btn-skip" wx:if="{{isNew}}" bindtap="skipProfile">跳过，先看看</button>
+  </view>
+</view>

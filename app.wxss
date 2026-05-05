@@ -1,0 +1,91 @@
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+button {
+  border-radius: 8rpx;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 40rpx;
+  padding: 24rpx 60rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.btn-primary:active {
+  opacity: 0.85;
+}
+
+.btn-danger {
+  background: #ff4757;
+  color: #fff;
+  border: none;
+  border-radius: 40rpx;
+  padding: 24rpx 60rpx;
+  font-size: 30rpx;
+}
+
+.btn-disabled {
+  background: #ccc !important;
+  color: #999 !important;
+}
+
+.input-field {
+  background: #f8f9fa;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.tag {
+  display: inline-block;
+  background: #eef0ff;
+  color: #667eea;
+  padding: 6rpx 18rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  margin-right: 10rpx;
+}
+
+.level-tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: 500;
+}
+
+.level-1 { background: #e8f5e9; color: #2e7d32; }
+.level-2 { background: #e3f2fd; color: #1565c0; }
+.level-3 { background: #fff3e0; color: #e65100; }
+.level-4 { background: #fce4ec; color: #c62828; }
+.level-5 { background: #f3e5f5; color: #6a1b9a; }
+
+.empty-state {
+  text-align: center;
+  padding: 100rpx 40rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.loading {
+  text-align: center;
+  padding: 40rpx;
+  color: #999;
+}

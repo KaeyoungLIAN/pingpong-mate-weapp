@@ -1,0 +1,58 @@
+<view class="page">
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <picker mode="date" value="{{filterDate}}" bindchange="onDateFilter">
+      <view class="filter-item">{{filterDate || '选择日期'}}</view>
+    </picker>
+    <picker mode="selector" range="{{distanceOptions}}" bindchange="onDistanceFilter">
+      <view class="filter-item">{{distanceLabels[filterDistance]}}</view>
+    </picker>
+    <picker mode="selector" range="{{levelFilterOptions}}" bindchange="onLevelFilter">
+      <view class="filter-item">{{levelFilterLabels[filterLevel]}}</view>
+    </picker>
+    <view class="filter-clear" bindtap="clearFilter">清除</view>
+  </view>
+
+  <!-- 约球列表 -->
+  <scroll-view scroll-y class="match-list" bindscrolltolower="loadMore">
+    <view wx:for="{{matches}}" wx:key="id" class="match-card card" bindtap="goDetail" data-match-id="{{item.id}}">
+      <view class="match-header">
+        <image class="avatar" src="{{item.creator.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="creator-info">
+          <text class="nickname">{{item.creator.nickname}}</text>
+          <text class="level-tag level-{{item.creator.skill_level}}">Lv.{{item.creator.skill_level}}</text>
+        </view>
+        <view class="vacancy-tag">
+          <text class="vacancy-num">{{item.vacancies}}</text>
+          <text class="vacancy-label">缺人</text>
+        </view>
+      </view>
+
+      <view class="match-body">
+        <view class="info-row">
+          <text class="info-icon">📅</text>
+          <text>{{item.date}} {{item.time_start.slice(0,5)}}-{{item.time_end.slice(0,5)}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-icon">📍</text>
+          <text>{{item.district}}</text>
+        </view>
+        <view class="info-row" wx:if="{{item.notes}}">
+          <text class="info-icon">💬</text>
+          <text class="notes">{{item.notes}}</text>
+        </view>
+      </view>
+
+      <view class="match-footer">
+        <text wx:if="{{item.skill_level_required}}" class="tag">要求 Lv.{{item.skill_level_required}}+</text>
+        <text class="tag">乒乓球</text>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="loading">加载中...</view>
+    <view wx:if="{{!loading && matches.length === 0}}" class="empty-state">暂无约球信息</view>
+  </scroll-view>
+
+  <!-- 发布按钮 -->
+  <view class="fab" bindtap="goCreate">+</view>
+</view>
