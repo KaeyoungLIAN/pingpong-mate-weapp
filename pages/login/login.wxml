@@ -1,18 +1,25 @@
 <view class="login-container">
   <view class="login-header">
-    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <view class="logo">🏓</view>
     <text class="title">乒乓搭子</text>
-    <text class="subtitle">找到水平相近的球友，一起快乐乒乓</text>
+    <text class="subtitle">选择用户进入 Demo 模式</text>
   </view>
 
-  <view class="login-btn-area">
-    <button class="btn-primary login-btn" bindtap="handleLogin" loading="{{loading}}">
-      <text wx:if="{{!loading}}">微信一键登录</text>
-      <text wx:else>登录中...</text>
-    </button>
+  <view class="user-list">
+    <view class="user-card" wx:for="{{users}}" wx:key="id" bindtap="handleLogin" data-user-id="{{item.id}}">
+      <view class="user-avatar" style="background: {{item.color}};">
+        <text class="avatar-text">{{item.initials}}</text>
+      </view>
+      <view class="user-info">
+        <text class="user-name">{{item.name}}</text>
+        <text class="user-detail">🏓 Lv.{{item.level}} · {{item.district}}</text>
+        <text class="user-detail">{{item.bio}}</text>
+      </view>
+      <view class="user-arrow">›</view>
+    </view>
   </view>
 
-  <view class="login-footer">
-    <text class="footer-text">登录即表示同意《用户协议》和《隐私政策》</text>
+  <view class="demo-badge">
+    <text class="badge-text">Demo 模式 · 数据仅供开发测试</text>
   </view>
 </view>
