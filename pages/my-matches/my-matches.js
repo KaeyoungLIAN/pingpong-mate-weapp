@@ -45,4 +45,33 @@ Page({
       url: '/pages/detail/detail?match_id=' + matchId,
     })
   },
+
+  /** 退出登录 */
+  async handleLogout() {
+    const app = getApp()
+    const res = await new Promise((resolve) => {
+      wx.showModal({
+        title: '提示',
+        content: '确定退出登录吗？',
+        success: (res) => resolve(res.confirm),
+      })
+    })
+    if (!res) return
+
+    try {
+      await api.del('/users/logout/')
+    } catch (err) {
+      // 即使后端请求失败也清除本地登录态
+      console.warn('退出登录接口调用失败：', err)
+    }
+
+    // 清除本地登录态
+    wx.removeStorageSync('token')
+    wx.removeStorageSync('userInfo')
+    app.globalData.token = null
+    app.globalData.userInfo = null
+
+    // 跳转回登录页
+    wx.reLaunch({ url: '/pages/login/login' })
+  },
 })

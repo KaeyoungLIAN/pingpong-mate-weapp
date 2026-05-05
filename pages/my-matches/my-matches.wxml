@@ -35,4 +35,9 @@
       <text wx:else>还没有报过名</text>
     </view>
   </scroll-view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
 </view>
