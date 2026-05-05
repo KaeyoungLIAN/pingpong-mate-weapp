@@ -21,6 +21,7 @@ Page({
     // 选项列表
     genderOptions: ['男', '女'],
     genderValues: ['male', 'female'],
+    genderDisplay: { 'male': '男', 'female': '女' },
     skillOptions: ['1-初学者', '2-初级', '3-中级', '4-高级', '5-专业级'],
     skillLabels: { 1: '1-初学者', 2: '2-初级', 3: '3-中级', 4: '4-高级', 5: '5-专业级' },
     districtOptions: [

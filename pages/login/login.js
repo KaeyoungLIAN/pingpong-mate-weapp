@@ -28,7 +28,7 @@ Page({
 
       // 2. 调用后端登录接口
       const res = await api.post('/users/login/', { code })
-      const { token, user_info: userInfo, is_new: isNew } = res
+      const { token, user: userInfo, is_new: isNew } = res
 
       // 3. 保存登录态
       wx.setStorageSync('token', token)
@@ -38,7 +38,7 @@ Page({
 
       // 4. 根据是否新用户跳转
       if (isNew) {
-        wx.redirectTo({ url: '/pages/profile-edit/profile-edit' })
+        wx.redirectTo({ url: '/pages/profile-edit/profile-edit?isNew=true' })
       } else {
         wx.reLaunch({ url: '/pages/home/home' })
       }

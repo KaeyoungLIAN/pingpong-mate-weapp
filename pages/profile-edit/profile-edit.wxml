@@ -8,7 +8,7 @@
     <view class="form-group">
       <text class="label">性别</text>
       <picker mode="selector" range="{{genderOptions}}" bindchange="onGenderChange">
-        <view class="picker {{gender ? '' : 'placeholder'}}">{{gender ? gender : '请选择性别'}}</view>
+        <view class="picker {{gender ? '' : 'placeholder'}}">{{gender ? genderDisplay[gender] : '请选择性别'}}</view>
       </picker>
     </view>
 

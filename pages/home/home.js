@@ -52,9 +52,12 @@ Page({
       if (filterDistance > 0) {
         params.distance = [3, 5, 10][filterDistance - 1]
       }
-      // 水平筛选
+      // 水平筛选：传当前用户水平（让后端筛选低于该水平的）
       if (filterLevel === 1) {
-        params.skill_level_required = true
+        const userInfo = wx.getStorageSync('userInfo')
+        if (userInfo && userInfo.skill_level) {
+          params.skill_level_required = userInfo.skill_level
+        }
       }
 
       const res = await api.get('/matches/', params)
